@@ -1,0 +1,8 @@
+# IntelliJ
+.idea
+*.iml
+*.ipr
+*.iws
+
+# OSX trash
+.DS_Store
