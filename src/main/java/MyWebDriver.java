@@ -2,9 +2,18 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.support.events.EventFiringWebDriver;
 
-public class MyWebDriver {
-    public static WebDriver initDriver() {
+class MyWebDriver {
+    static EventFiringWebDriver getConfiguredDriver() {
+        WebDriver driver = initDriver();
+
+        EventFiringWebDriver webDriver = new EventFiringWebDriver(driver);
+        webDriver.register(new WebDriverLogger());
+        return webDriver;
+    }
+
+    private static WebDriver initDriver() {
         String myDriver = null;
         myDriver = System.getProperty("webdriver");
         if (myDriver != null) {

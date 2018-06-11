@@ -3,12 +3,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
-import java.util.ArrayList;
 
 public class TaskThree extends MyWebDriver {
 
@@ -21,7 +19,7 @@ public class TaskThree extends MyWebDriver {
 
         driver.get("http://prestashop-automation.qatestlab.com.ua/admin147ajyvk0/");
 
-       WebElement field1 = driver.findElement(By.id("email"));
+        WebElement field1 = driver.findElement(By.id("email"));
         field1.sendKeys("webinar.test@gmail.com");
 
         WebElement field2 = driver.findElement(By.id("passwd"));
@@ -64,8 +62,6 @@ public class TaskThree extends MyWebDriver {
         WebElement table = driver.findElement(By.cssSelector("#form-category > div"));
         List<WebElement> tab_elements = table.findElements(By.xpath(".//tr/td[3]"));
 
-        ArrayList<String> cat_names = new ArrayList<String>();
-
         boolean found = false;
 
         for (WebElement el : tab_elements) {
@@ -80,13 +76,5 @@ public class TaskThree extends MyWebDriver {
         } else {
             System.out.println("Category '" + CATEGORY_NAME + "' is created");
         }
-    }
-
-    private static EventFiringWebDriver getConfiguredDriver() {
-        WebDriver driver = initDriver();
-
-        EventFiringWebDriver webDriver = new EventFiringWebDriver(driver);
-        webDriver.register(new WebDriverLogger());
-        return webDriver;
     }
 }
